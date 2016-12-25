@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Client Login Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=2, user-scalable=no" />
+<style>
+	#divqrcode {
+		width: 102px;
+		height: 102px;
+		margin-top: 14px;
+	}
+</style>
+<script src=""></script>
+<script type="text/javascript" src="qrcode"></script>
+</head>
+<body>
+	<h1 style="margin-top:147px;"></h1>Please Enter Your Id or Scan Below:
+	<input id="qrprint" type="text" />
+	<br />
+		<div id="divqrcode"></div>
+		
+		<script type="text/javascript">
+			var qrcode = new QRCode("#divqrcode"),
+			{
+				width: 102px,
+				height: 102px,
+			});
+			
+			function generateCode()
+			{
+				var_text = $("#qrprint");
+				if (!_text.value)
+				{
+					alert("Enter Your Id Number or Scan Below");
+					_text.focus();
+					return;
+				}
+				qrcode.makecode(_text.value);
+			}
+			generateCode();
+			$("#qrprint").
+				on("blur", function()
+				{
+					generateCode();
+				}).
+				on("keydown", function(e)
+				{
+					if (e.keyCode == 13)
+					{
+						generateCode();
+					}
+				});
+			</script>
+</body>
+</html>

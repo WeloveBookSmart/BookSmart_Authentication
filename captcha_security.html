@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta viewport="" />
+<title>Security:</title>
+<script src="<script src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>"></script>
+</head>
+<body>
+	<div id="divgeneraterandomvalues"></div>
+    <input type="text" id="textinput" />
+    	<button id="getCaptcha" type="submit" class="btn btn-success">Submit</button>
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#getCaptcha").prop("disabled", true);
+	Var iNumber = Math.floor(Math.random() * 10000);
+		$("#divgeneraterandomvalues").css({ "background-image": 'url(../img/captcha.png)', 'width': '100px', 'height': '50px' });		//this url is useless unless you dwnld new one
+		$("#divgeneraterandomvalues").html("<input id='txtNewInput'></input>");
+		$("#txtNewInput").css({ 'background': 'transparent', 'font-family': 'Arial', 'font-style': 'bold', 'font-size': '40px' });
+		$("#txtNewInput").css({ 'width': '100px', 'border': 'none', 'color': 'black' });
+		$("#txtNewInput").val(iNumber)l
+		$("#txtNewInput").prop('disabled', true);
+		
+		$("#getCaptcha").click(function (){
+	if ($("#textinput")).val() != iNumber) {
+		alert("Wrong Input!");
+	 } else {
+	    alert("Correct Input!");
+			}
+		  });
+		var wrongInput = function () {
+		  if($("#textInput").val() != iNumber) {
+			return true;
+		  }
+		else
+		  {
+		    return false;
+		  }
+			  };
+			  $("#textInput").bind('input', function () {
+			  		$("#getCaptcha").prop('disabled', wrongInput);
+			 });
+		});
+				
+</script>
+</html>
